@@ -30,7 +30,6 @@ public class Pilha<T> {
         }
         data = dataNovo;
         top--;
-        System.out.println("Diminuiu");
         return valorRem;
     }
 

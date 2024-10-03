@@ -24,7 +24,7 @@ public class FloodFill extends JPanel implements ActionListener {
         x = xIni;
         y = yIni;
         tipo = tipoEsc;
-        imagem = ImageIO.read(new File("src/Untitled.png"));
+        imagem = ImageIO.read(new File("src/BBBB.png"));
         imgLarg = imagem.getWidth(null);
         imgAlt = imagem.getHeight(null);
         rgbIni = imagem.getRGB(x, y);
@@ -49,8 +49,6 @@ public class FloodFill extends JPanel implements ActionListener {
                 if (!pilha.isEmpty()) {
                     Pixel p1 = pilha.pop();
 
-
-                    //System.out.println(pilha.top);
                     x = p1.x;
                     y = p1.y;
                     if (validarPixel(x, y)) {
@@ -58,8 +56,6 @@ public class FloodFill extends JPanel implements ActionListener {
                             g2d.setColor(Color.RED);
                             g2d.drawLine(x, y, x, y);
                             g2d.dispose();
-                            //System.out.println(x);
-                            //System.out.println(y);
                             if (validarPixel(x + 1, y)){
                                 pilha.push(new Pixel(x + 1, y));
                             }
@@ -72,9 +68,6 @@ public class FloodFill extends JPanel implements ActionListener {
                             if (validarPixel(x, y - 1)){
                                 pilha.push(new Pixel(x, y - 1));
                             }
-                            //System.out.println("deu boa");
-                        }else{
-                            //System.out.println("deu ruim");
                         }
                     }
                 }else{
@@ -95,10 +88,18 @@ public class FloodFill extends JPanel implements ActionListener {
                             g2d.setColor(Color.RED);
                             g2d.drawLine(x, y, x, y);
                             g2d.dispose();
-                            fila.add(new Pixel(x + 1, y));
-                            fila.add(new Pixel(x - 1, y));
-                            fila.add(new Pixel(x, y + 1));
-                            fila.add(new Pixel(x, y - 1));
+                            if (validarPixel(x + 1, y)){
+                                fila.add(new Pixel(x + 1, y));
+                            }
+                            if (validarPixel(x - 1, y)){
+                                fila.add(new Pixel(x - 1, y));
+                            }
+                            if (validarPixel(x, y + 1)){
+                                fila.add(new Pixel(x, y + 1));
+                            }
+                            if (validarPixel(x, y - 1)){
+                                fila.add(new Pixel(x, y - 1));
+                            }
                         }
                     }
                 }else {
